@@ -1,5 +1,13 @@
 # Research Agent — Setup & Run Instructions
 
+## Live Hosted App
+
+**The app is live and ready to use**
+
+### https://researchagent-production-ba98.up.railway.app/
+
+---
+
 ## Requirements
 
 - Python 3.9 or higher
