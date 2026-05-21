@@ -42,7 +42,6 @@ streamlit run app.py
 
 The app will open in your browser automatically. If it doesn't, navigate to `http://localhost:8501`.
 
-> The `.env` file containing the API key is included in the submission — no setup needed.
 
 ---
 
