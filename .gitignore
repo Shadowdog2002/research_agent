@@ -1,0 +1,9 @@
+venv/
+.env
+data/
+__pycache__/
+*.pyc
+*.pyo
+.claude/
+PLAN.md
+TECHNICAL_REPORT.md
