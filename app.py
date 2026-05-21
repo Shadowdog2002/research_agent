@@ -185,7 +185,7 @@ class PipelineState:
             self.done = True
 
 
-def _pipeline_thread_fn(state: PipelineState, topic: str, fetch_n: int, min_score: float):
+def _pipeline_thread_fn(state: PipelineState, topic: str, fetch_n: int, min_score: float, username: str = "default"):
     try:
         result = run_research_pipeline(
             topic,
@@ -193,6 +193,7 @@ def _pipeline_thread_fn(state: PipelineState, topic: str, fetch_n: int, min_scor
             status_cb=lambda msg: state.update(status=msg),
             fetch_n=fetch_n,
             min_score=min_score,
+            username=username,
         )
         if isinstance(result, dict) and "error" in result:
             state.fail(result["error"])
@@ -408,7 +409,7 @@ if st.session_state["page"] == "Search Papers":
             state = PipelineState()
             thread = threading.Thread(
                 target=_pipeline_thread_fn,
-                args=(state, topic.strip(), fetch_n, min_score),
+                args=(state, topic.strip(), fetch_n, min_score, st.session_state["username"]),
                 daemon=True,
             )
             st.session_state["pipeline_state"] = state

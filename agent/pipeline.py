@@ -29,6 +29,7 @@ def run_research_pipeline(
     status_cb: Optional[Callable[[str], None]] = None,
     fetch_n: int = 20,
     min_score: float = 0.0,
+    username: str = "default",
 ) -> Dict:
     """
     Full agent loop:
@@ -50,7 +51,7 @@ def run_research_pipeline(
             status_cb(msg)
 
     llm = get_client()
-    collection = get_collection()
+    collection = get_collection(username)
 
     # -- 1. Search & rerank -------------------------------------------------------
     _status(f"Searching arXiv (fetching {fetch_n}, reranking to top 5)...")

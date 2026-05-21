@@ -64,6 +64,7 @@ class ResearchOrchestrator:
         min_score: float = 0.0,
         progress_cb: Optional[Callable[[float], None]] = None,
         status_cb: Optional[Callable[[str], None]] = None,
+        username: str = "default",
     ) -> Dict:
         """
         Orchestrate the full research pipeline.
@@ -82,6 +83,7 @@ class ResearchOrchestrator:
             status_cb=status_cb,
             fetch_n=fetch_n,
             min_score=min_score,
+            username=username,
         )
 
     def answer(
