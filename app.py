@@ -199,6 +199,8 @@ def _pipeline_thread_fn(state: PipelineState, topic: str, fetch_n: int, min_scor
         else:
             state.finish(result)
     except Exception as exc:
+        import traceback
+        traceback.print_exc()
         state.fail(str(exc))
 
 
