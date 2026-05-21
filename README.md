@@ -32,7 +32,7 @@ Then activate it (this project was developed on Windows):
 pip install -r requirements.txt
 ```
 
-> The first run will automatically download two small ML models (~100 MB total) which takes 3-5 minutes. This only happens once. They are cached locally after that.
+> The first run will automatically download two small ML models (~100 MB total) which takes 3–5 minutes. This only happens once — they are cached locally after that.
 
 ### 3. Run the app
 
@@ -42,16 +42,22 @@ streamlit run app.py
 
 The app will open in your browser automatically. If it doesn't, navigate to `http://localhost:8501`.
 
-> The `.env` file containing the API key is included in the submission so there is no setup needed.
+> The `.env` file containing the API key is included in the submission — no setup needed.
 
 ---
 
 ## How to Use
 
-1. **Search Papers** — Enter a research topic and click "Run Pipeline". The agent will search arXiv, select the 5 most relevant papers, summarise each one, and generate a literature review. This takes 2–5 minutes depending on paper length.
+### Login
 
-2. **Literature Review** — View the generated review and research gap analysis. Previous reviews are saved and shown below.
+Enter any username on the login screen. Each username gets its own isolated knowledge base, saved reviews, and chat history. You can use any name — nothing is password-protected.
 
-3. **Ask Questions** — Ask natural-language questions about the papers in your knowledge base. Answers include citations and a confidence level.
+### Pages
 
-4. **Knowledge Base** — View all ingested papers, upload your own PDFs, or search arXiv to add individual papers.
+1. **Search Papers** — Enter a research topic and click "Run Pipeline". The agent searches arXiv, selects the 5 most relevant papers using a cross-encoder reranker, summarises each one, generates a literature review, runs a CriticAgent to review the draft, then produces a revised final review. Also generates a research gap analysis with suggested follow-up searches. Takes 3–7 minutes depending on paper length.
+
+2. **Literature Review** — View the final revised literature review alongside a collapsed "CriticAgent Notes" section showing the critique used to improve it. Also shows the research gap analysis and suggested arXiv queries. Previous reviews are saved per user and shown below.
+
+3. **Ask Questions** — Ask natural-language questions about the papers in your knowledge base. Answers are grounded in retrieved paper excerpts and include citations and a confidence level (High / Medium / Low).
+
+4. **Knowledge Base** — View all ingested papers, delete individual papers, upload your own PDFs, or search arXiv to add individual papers. You can also generate a literature review from any selection of up to 6 papers already in the knowledge base.
